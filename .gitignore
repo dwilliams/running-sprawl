@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Moar Stufts
+.idea
+*.key
+*.pem
+*.crt
