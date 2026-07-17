@@ -1,0 +1,8 @@
+# FIXME: How to make which node has which OS without gather_facts?
+- hosts: database
+  gather_facts: false
+  tasks:
+    - name: Include Tribblix initialization tasks
+      include_role:
+        name: ensure_python
+        tasks_from: tribblix.yaml

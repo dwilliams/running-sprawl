@@ -1,0 +1,22 @@
+---
+- name: Check for Python 3.13
+  ansible.builtin.raw: "which python3.13"
+  ignore_errors: true
+  register: check_result
+  changed_when:
+    - check_result.rc != 0
+
+- name: Install Python 3.13
+  # NOTE: This may fail on the first 'zap refresh' after install.  How to check?
+  ansible.builtin.raw: "zap refresh && zap install-overlay python313"
+  when: check_result.changed
+  become: true
+
+- name: Print Python 3.13 Version
+  ansible.builtin.raw: "python3.13 --version"
+  ignore_errors: true
+  register: check_result
+  changed_when:
+    - check_result.rc != 0
+  failed_when:
+    - check_result.rc != 0
