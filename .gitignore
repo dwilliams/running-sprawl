@@ -222,3 +222,4 @@ __marimo__/
 *.key
 *.pem
 *.crt
+test_inventory.ini
